@@ -18,7 +18,7 @@ describe "Transactions/Find API" do
     invoice_id = 3
     transactions = create_list(:transaction, 5, invoice_id: invoice_id)
 
-    get "/api/v1/transactions/find_all?invoice_id=#{transactions[2].invoice_id}"
+    get "/api/v1/transactions/find_all?invoice_id=#{invoice_id}"
 
     transactions = JSON.parse(response.body)
 
@@ -40,6 +40,21 @@ describe "Transactions/Find API" do
     expect(transaction["id"]).to eq(transactions[2].id)
     expect(transaction["invoice_id"]).to eq(transactions[2].invoice_id)
     expect(transaction["credit_card_number"]).to eq(transactions[2].credit_card_number)
+  end
+
+  it "Can find multiple transactions by credit card number" do
+    credit_card_number = 454567
+    transactions = create_list(:transaction, 5, credit_card_number: credit_card_number)
+
+    get "/api/v1/transactions/find_all?credit_card_number=#{credit_card_number}"
+
+    transactions = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transactions.count).to eq(5)
+    transactions.each do |transaction|
+      expect(transaction["credit_card_number"]).to eq(credit_card_number.to_s)
+    end
   end
 
   it "Can find a transaction by its credit_card_expiration_date" do
