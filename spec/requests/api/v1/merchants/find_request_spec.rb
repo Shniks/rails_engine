@@ -96,4 +96,17 @@ describe "Merchants/Find API" do
     expect(merchant["name"]).to eq(merchant_2.name)
     expect(merchant["name"]).to_not eq(merchant_3.name)
   end
+
+  it "Can find a list of merchants with the same updated at date" do
+    updated_at = "2018-04-30 22:45:00 UTC"
+    create_list(:merchant, 5, updated_at: updated_at)
+    Merchant.create(name: "Sergio", updated_at: updated_at)
+
+    get "/api/v1/merchants/find_all?updated_at=#{updated_at}"
+
+    merchants = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(merchants.count).to eq(6)
+  end
 end
