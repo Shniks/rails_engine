@@ -31,4 +31,16 @@ describe 'Items search API' do
 
     expect(items.count).to be(count)
   end
+
+  it 'should be able to find a random merchant' do
+    create_list(:item, 3)
+
+    get '/api/v1/items/random'
+
+    item = JSON.parse(response.body)
+    item_names = Item.pluck(:name)
+
+    expect(response).to be_successful
+    expect(item_names).to include(item['name'])
+  end
 end
