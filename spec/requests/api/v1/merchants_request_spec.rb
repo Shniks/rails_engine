@@ -11,4 +11,16 @@ describe "Merchants API" do
     merchants = JSON.parse(response.body)
     expect(merchants.count).to eq(5)
   end
+
+  it "Can get one merchant by its id" do
+    merchants = create_list(:merchant, 5)
+    id = merchant[2].id
+
+    get "/api/v1/merchants/#{id}"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(merchants["id"]).to eq(id)
+  end
 end
