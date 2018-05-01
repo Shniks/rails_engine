@@ -8,6 +8,10 @@ Rails.application.routes.draw do
         get 'random', to: 'random#index'
       end
 
+      namespace :items do
+        get 'find', to: 'search#show'
+      end
+
       resources :items, only: [:index, :show]
       resources :merchants, only: [:index, :show]
 
