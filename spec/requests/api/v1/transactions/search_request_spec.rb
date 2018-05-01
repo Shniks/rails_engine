@@ -73,6 +73,18 @@ describe "Transactions/Find API" do
     expect(transaction["credit_card_number"]).to eq(transaction_2.credit_card_number)
   end
 
+  it "Can find multiple transactions by credit card expiration date" do
+    expiration_date_1 = "2018-05-01 07:19:34"
+    transactions = create_list(:transaction, 5, credit_card_expiration_date: expiration_date_1)
+
+    get "/api/v1/transactions/find_all?credit_card_expiration_date=#{expiration_date_1}"
+
+    transactions = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transactions.count).to eq(5)
+  end
+
   it "Can find a transaction by its result" do
     expiration_date_1 = "2018-05-01 07:19:34"
     expiration_date_2 = "2017-05-01 07:19:34"
