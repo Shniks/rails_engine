@@ -79,7 +79,7 @@ describe "Customers/Find API" do
     create_list(:customer, 2, created_at: created_at)
     customers = Customer.all
 
-    get "/api/v1/customers/find_all?created_at=#{customers[7].created_at}"
+    get "/api/v1/customers/find_all?created_at=#{created_at}"
 
     customers = JSON.parse(response.body)
 
@@ -109,7 +109,7 @@ describe "Customers/Find API" do
     create_list(:customer, 4, updated_at: updated_at)
     customers = Customer.all
 
-    get "/api/v1/customers/find_all?updated_at=#{customers[7].updated_at}"
+    get "/api/v1/customers/find_all?updated_at=#{updated_at}"
 
     customers = JSON.parse(response.body)
 
