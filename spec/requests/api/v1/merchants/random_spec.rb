@@ -11,7 +11,7 @@ describe "Merchants Random API" do
     merchant = JSON.parse(response.body)
     merchant_names = Merchant.pluck(:name)
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(merchant_names).to include(merchant["name"])
   end
 end
