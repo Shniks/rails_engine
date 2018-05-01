@@ -50,4 +50,22 @@ describe "Merchants/Find API" do
     expect(merchant["name"]).to eq(merchant_3.name)
     expect(merchant["name"]).to_not eq(merchant_2.name)
   end
+
+  it "Can find a merchant by its updated at date" do
+    updated_at = "2018-04-30 20:45:00 UTC"
+    merchant_1 = Merchant.create(name: "Sergio")
+    merchant_2 = Merchant.create(name: "Nikhil", updated_at: updated_at)
+    merchant_3 = Merchant.create(name: "Tyler")
+
+    get "/api/v1/merchants/find?updated_at=#{merchant_2.updated_at}"
+
+    merchant_id = JSON.parse(response.body)["id"]
+    merchant = Merchant.find(merchant_id)
+
+    expect(response).to be_successful
+    expect(merchant["id"]).to eq(merchant_2.id)
+    expect(merchant["id"]).to_not eq(merchant_1.id)
+    expect(merchant["name"]).to eq(merchant_2.name)
+    expect(merchant["name"]).to_not eq(merchant_3.name)
+  end
 end
