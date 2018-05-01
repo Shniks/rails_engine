@@ -63,7 +63,7 @@ describe "Customers/Find API" do
     create_list(:customer, 2, created_at: created_at)
     customers = Customer.all
 
-    get "/api/v1/customers/find?last_name=#{customers[7].last_name}"
+    get "/api/v1/customers/find?created_at=#{customers[7].created_at}"
 
     customer = JSON.parse(response.body)
 
@@ -73,13 +73,27 @@ describe "Customers/Find API" do
     expect(customer["last_name"]).to eq(customers[7].last_name)
   end
 
+  it "Can find a list of customers by created at date" do
+    created_at = "2018-04-30 22:45:00 UTC"
+    create_list(:customer, 7)
+    create_list(:customer, 2, created_at: created_at)
+    customers = Customer.all
+
+    get "/api/v1/customers/find_all?created_at=#{customers[7].created_at}"
+
+    customers = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(customers.count).to eq(2)
+  end
+
   it "Can find a customer by its updated at date" do
     updated_at = "2018-04-30 22:45:00 UTC"
     create_list(:customer, 7)
     create_list(:customer, 2, updated_at: updated_at)
     customers = Customer.all
 
-    get "/api/v1/customers/find?last_name=#{customers[7].last_name}"
+    get "/api/v1/customers/find?updated_at=#{customers[7].updated_at}"
 
     customer = JSON.parse(response.body)
 
