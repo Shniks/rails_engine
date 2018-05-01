@@ -5,7 +5,7 @@ describe 'Items API' do
     merchant = create(:merchant)
     count = 5
 
-    create_list(:items, count, merchant: merchant)
+    create_list(:item, count, merchant: merchant)
 
     get '/api/v1/items'
 
