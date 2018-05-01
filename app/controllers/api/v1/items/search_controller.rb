@@ -7,6 +7,10 @@ class Api::V1::Items::SearchController < ApplicationController
     render json: Item.where(item_params)
   end
 
+  def random
+    render json: Item.all.sample
+  end
+
   private
 
   def item_params

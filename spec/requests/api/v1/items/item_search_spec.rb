@@ -32,8 +32,9 @@ describe 'Items search API' do
     expect(items.count).to be(count)
   end
 
-  it 'should be able to find a random merchant' do
-    create_list(:item, 3)
+  it 'should be able to find a random item' do
+    merchant = create(:merchant)
+    create_list(:item, 3, merchant: merchant)
 
     get '/api/v1/items/random'
 

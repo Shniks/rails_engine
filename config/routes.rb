@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       namespace :items do
         get 'find', to: 'search#find'
         get 'find_all', to: 'search#find_all'
+        get 'random', to: 'search#random'
       end
 
       resources :items, only: [:index, :show]
