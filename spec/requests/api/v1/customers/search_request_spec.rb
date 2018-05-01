@@ -42,6 +42,7 @@ describe "Customers/Find API" do
     customers.each do |customer|
       expect(customer["last_name"]).to eq(last_name)
     end
+    expect(customers.class).to eq(Array)
   end
 
   it "Can find a customer by its last name" do
@@ -85,6 +86,7 @@ describe "Customers/Find API" do
 
     expect(response).to be_successful
     expect(customers.count).to eq(2)
+    expect(customers.class).to eq(Array)
   end
 
   it "Can find a customer by its updated at date" do
@@ -115,5 +117,6 @@ describe "Customers/Find API" do
 
     expect(response).to be_successful
     expect(customers.count).to eq(4)
+    expect(customers.class).to eq(Array)
   end
 end
