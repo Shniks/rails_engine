@@ -14,6 +14,21 @@ describe "Transactions/Find API" do
     expect(transaction["credit_card_number"]).to eq(transactions[2].credit_card_number)
   end
 
+  it "Can find multiple transactions by invoice_id" do
+    invoice_id = 3
+    transactions = create_list(:transaction, 5, invoice_id: invoice_id)
+
+    get "/api/v1/transactions/find_all?invoice_id=#{transactions[2].invoice_id}"
+
+    transactions = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transactions.count).to eq(5)
+    transactions.each do |transaction|
+      expect(transaction["invoice_id"]).to eq(invoice_id)
+    end
+  end
+
   it "Can find a transaction by its credit_card_number" do
     transactions = create_list(:transaction, 5)
 
