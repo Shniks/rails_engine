@@ -7,7 +7,11 @@ Rails.application.routes.draw do
         get 'find_all', to: 'search#index'
         get 'random', to: 'random#index'
       end
+
+      resources :items, only: [:index]
       resources :merchants, only: [:index, :show]
+
+
     end
   end
 end
