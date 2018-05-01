@@ -102,4 +102,18 @@ describe "Customers/Find API" do
     expect(customer["first_name"]).to eq(customers[7].first_name)
     expect(customer["last_name"]).to eq(customers[7].last_name)
   end
+
+  it "Can find a list of customers by updated at date" do
+    updated_at = "2018-04-30 22:45:00 UTC"
+    create_list(:customer, 7)
+    create_list(:customer, 4, updated_at: updated_at)
+    customers = Customer.all
+
+    get "/api/v1/customers/find_all?updated_at=#{customers[7].updated_at}"
+
+    customers = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(customers.count).to eq(4)
+  end
 end
