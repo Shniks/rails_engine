@@ -1,4 +1,8 @@
-class Api::V1::Merchants::FindController < ApplicationController
+class Api::V1::Merchants::SearchController < ApplicationController
+  def index
+    render json: Merchant.all
+  end
+  
   def show
     render json: Merchant.find_by(merchant_params)
   end
