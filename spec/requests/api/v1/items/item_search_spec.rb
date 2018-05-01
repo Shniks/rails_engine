@@ -16,4 +16,19 @@ describe 'Items search API' do
     expect(item['id']).to be(item_1.id)
     expect(item['name']).to eq(item_1.name)
   end
+
+  it 'should be able to find multiple items' do
+    merchant = create(:merchant)
+
+    count = 3
+    create_list(:item, count, merchant: merchant)
+
+    get "/api/v1/items/find_all?unit_price=#{Item.last.unit_price}"
+
+    expect(response).to be_successful
+
+    items = JSON.parse(response.body)
+
+    expect(items.count).to be(count)
+  end
 end
