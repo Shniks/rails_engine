@@ -8,6 +8,8 @@ Rails.application.routes.draw do
         get 'random', to: 'random#index'
       end
       resources :merchants, only: [:index, :show]
+
+      resources :transactions, only: [:index, :show]
     end
   end
 end
