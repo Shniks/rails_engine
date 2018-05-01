@@ -17,6 +17,21 @@ describe "Merchants/Find API" do
     expect(merchant["name"]).to_not eq(merchant_3.name)
   end
 
+  it "Can find multiple merchants by name" do
+    name = "Cummings-Thiel"
+    create_list(:merchant, 5, name: name)
+
+    get "/api/v1/merchants/find_all?name=#{name}"
+
+    merchants = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(merchants.count).to eq(5)
+    merchants.each do |merchant|
+      expect(merchant["name"]).to eq(name)
+    end
+  end
+
   it "Can find a merchant by its id" do
     merchant_1 = Merchant.create(name: "Sergio")
     merchant_2 = Merchant.create(name: "Nikhil")
