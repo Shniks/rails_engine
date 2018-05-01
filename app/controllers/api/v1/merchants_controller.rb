@@ -1,3 +1,6 @@
-class Api::V1::MerchantsControllers < ApplicationController
+class Api::V1::MerchantsController < ApplicationController
+
+  def index
+  end
 
 end
