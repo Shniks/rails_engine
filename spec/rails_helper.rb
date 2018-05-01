@@ -72,7 +72,6 @@ RSpec.configure do |config|
     c.after(:each) do
       DatabaseCleaner.clean
     end
-    c.include Capybara::DSL
   end
 
   Shoulda::Matchers.configure do |config|

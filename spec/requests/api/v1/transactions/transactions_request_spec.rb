@@ -1,0 +1,26 @@
+require 'rails_helper'
+
+describe "Transactions API" do
+  it "Sends a list of transactions" do
+    create_list(:transaction, 10)
+
+    get '/api/v1/transactions'
+
+    expect(response).to be_successful
+
+    transactions = JSON.parse(response.body)
+    expect(transactions.count).to eq(10)
+  end
+
+  it "Can get one transaction by its id" do
+    transactions = create_list(:transaction, 10)
+    id = transactions[6].id
+
+    get "/api/v1/transactions/#{id}"
+
+    transaction = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transaction["id"]).to eq(id)
+  end
+end
