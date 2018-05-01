@@ -66,6 +66,19 @@ describe "Merchants/Find API" do
     expect(merchant["name"]).to_not eq(merchant_2.name)
   end
 
+  it "Can find a list of merchants with the same created at date" do
+    created_at = "2018-04-30 22:45:00 UTC"
+    create_list(:merchant, 4, created_at: created_at)
+    Merchant.create(name: "Sergio")
+
+    get "/api/v1/merchants/find_all?created_at=#{created_at}"
+
+    merchants = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(merchants.count).to eq(4)
+  end
+
   it "Can find a merchant by its updated at date" do
     updated_at = "2018-04-30 20:45:00 UTC"
     merchant_1 = Merchant.create(name: "Sergio")
