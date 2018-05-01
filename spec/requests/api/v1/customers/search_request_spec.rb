@@ -14,6 +14,21 @@ describe "Customers/Find API" do
     expect(customer["last_name"]).to eq(customers[4].last_name)
   end
 
+  it "Can find multiple customers by first name" do
+    first_name = "Nikhil"
+    customers = create_list(:customer, 7, first_name: first_name)
+
+    get "/api/v1/customers/find_all?first_name=#{first_name}"
+
+    customers = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(customers.count).to eq(7)
+    customers.each do |customer|
+      expect(customer["first_name"]).to eq(first_name)
+    end
+  end
+
   it "Can find a customer by its last name" do
     customers = create_list(:customer, 7)
 
