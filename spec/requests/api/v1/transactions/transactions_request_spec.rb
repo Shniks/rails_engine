@@ -12,15 +12,15 @@ describe "Transactions API" do
     expect(transactions.count).to eq(10)
   end
 
-  # it "Can get one merchant by its id" do
-  #   merchants = create_list(:merchant, 5)
-  #   id = merchants[2].id
-  #
-  #   get "/api/v1/merchants/#{id}"
-  #
-  #   merchant = JSON.parse(response.body)
-  #
-  #   expect(response).to be_successful
-  #   expect(merchant["id"]).to eq(id)
-  # end
+  it "Can get one transaction by its id" do
+    transactions = create_list(:transaction, 10)
+    id = transactions[6].id
+
+    get "/api/v1/transactions/#{id}"
+
+    transaction = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transaction["id"]).to eq(id)
+  end
 end
