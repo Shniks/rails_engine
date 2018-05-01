@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
 
       namespace :items do
-        get 'find', to: 'search#show'
+        get 'find', to: 'search#find'
       end
 
       resources :items, only: [:index, :show]

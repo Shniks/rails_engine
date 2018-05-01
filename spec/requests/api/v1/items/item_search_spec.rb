@@ -14,6 +14,6 @@ describe 'Items search API' do
     item = JSON.parse(response.body)
 
     expect(item['id']).to be(item_1.id)
-    expect(item['name']).to be(item_1.name)
+    expect(item['name']).to eq(item_1.name)
   end
 end
