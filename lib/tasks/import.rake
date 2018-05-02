@@ -1,8 +1,8 @@
 require 'csv'
 
-namespace :import_csv do
+namespace :import do
   desc 'Seed The Database'
-  task load: :environment do
+  task all: :environment do
     load_merchants
     load_transactions
     load_customers
