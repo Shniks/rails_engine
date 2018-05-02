@@ -4,10 +4,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-desc 'Import data'
-namespace :import do
-  task :all do
-    require './db/import/all'
-  end
-end
