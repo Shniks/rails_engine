@@ -1,4 +1,6 @@
 --require spec_helper
 --color
---format=documentation
 --order=random
+--require error_to_communicate/at_exit
+--require error_to_communicate/rspec_formatter
+--format WhatWeveGotHereIsAnErrorToCommunicate::RSpecFormatter
