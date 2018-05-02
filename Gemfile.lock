@@ -48,8 +48,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    binding_of_caller (0.7.3)
-      debug_inspector (>= 0.0.1)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -60,7 +58,6 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
-    debug_inspector (0.0.3)
     diff-lcs (1.3)
     docile (1.3.0)
     erubi (1.7.1)
@@ -74,7 +71,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    interception (0.5)
     json (2.1.0)
     jsonapi-renderer (0.2.0)
     listen (3.1.5)
@@ -133,7 +129,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rouge (1.11.1)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -173,10 +168,6 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    what_weve_got_here_is_an_error_to_communicate (0.0.8)
-      binding_of_caller (~> 0.7.2)
-      interception (~> 0.5)
-      rouge (~> 1.8, != 1.9.1)
 
 PLATFORMS
   ruby
@@ -196,7 +187,6 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   tzinfo-data
-  what_weve_got_here_is_an_error_to_communicate
 
 RUBY VERSION
    ruby 2.4.1p111

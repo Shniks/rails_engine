@@ -38,7 +38,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'what_weve_got_here_is_an_error_to_communicate'
 end
 
 group :development do
