@@ -3,6 +3,7 @@ require 'csv'
 namespace :import do
   desc 'Seed The Database'
   task all: :environment do
+    puts 'Loading requisite CSV files. Be right back!'
     load_merchants
     load_transactions
     load_customers
