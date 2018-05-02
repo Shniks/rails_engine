@@ -4,10 +4,18 @@ namespace :import do
   desc 'Seed The Database'
   task all: :environment do
     puts 'Loading requisite CSV files. Be right back!'
+    puts 'Loading merchants...'
     load_merchants
+    puts 'Loading transactions...'
     load_transactions
+    puts 'Loading customers...'
     load_customers
+    puts 'Loading items...'
     load_items
+    puts 'Loading invoices...'
+    load_invoices
+    puts 'Loading invoice items...'
+    load_invoice_items
     puts 'All CSV files loaded and ready to use.'
   end
 
@@ -32,6 +40,18 @@ namespace :import do
   def load_items
     CSV.foreach('db/csv/items.csv', headers: true, header_converters: :symbol) do |row|
       Item.create!(row.to_hash)
+    end
+  end
+
+  def load_invoices
+    CSV.foreach('db/csv/invoices.csv', headers: true, header_converters: :symbol) do |row|
+      Invoice.create!(row.to_hash)
+    end
+  end
+
+  def load_invoice_items
+    CSV.foreach('db/csv/invoice_items.csv', headers: true, header_converters: :symbol) do |row|
+      InvoiceItem.create!(row.to_hash)
     end
   end
 
