@@ -8,6 +8,7 @@ namespace :import do
     load_transactions
     load_customers
     load_items
+    puts 'All CSV files loaded and ready to use.'
   end
 
   def load_merchants
