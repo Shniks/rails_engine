@@ -1,6 +1,10 @@
 class Api::V1::Items::SearchController < ApplicationController
   def show
-    render json: Item.find_by(item_params)
+    render json: Item
+      .where(item_params)
+      .order('id ASC')
+      .limit(1)
+      .first
   end
 
   def index
@@ -10,6 +14,9 @@ class Api::V1::Items::SearchController < ApplicationController
   private
 
   def item_params
-    params.permit(:id, :name, :unit_price)
+    unless params[:unit_price].nil?
+     params[:unit_price] = (100 * params[:unit_price].to_f).ceil
+    end
+    params.permit(:id, :name, :unit_price, :created_at, :updated_at, :description, :merchant_id)
   end
 end
