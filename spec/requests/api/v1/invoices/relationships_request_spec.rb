@@ -29,4 +29,21 @@ describe 'Invoices API Relationships' do
       expect(invoice_item["invoice_id"]).to eq(@invoice.id)
     end
   end
+
+  it 'Returns a collection of associated items' do
+    item_ids = create_list(:item, 7).pluck(:id)
+    item_ids.each do |item_id|
+      create(:invoice_item, item_id: item_id, invoice: @invoice)
+    end
+
+    get "/api/v1/invoices/#{@invoice.id}/items"
+
+    items = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(items.count).to eq(7)
+    items.each do |item|
+      expect(item_ids).to include(item["id"])
+    end
+  end
 end
