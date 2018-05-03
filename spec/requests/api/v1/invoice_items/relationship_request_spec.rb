@@ -13,4 +13,13 @@ describe 'Invoice Items API relationships' do
     expect(response).to be_successful
     expect(invoice["id"]).to eq(@invoice_item.invoice_id)
   end
+
+  it 'Sends the associated item' do
+    get "/api/v1/invoice_items/#{@invoice_item.id}/item"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(item["id"]).to eq(@invoice_item.item_id)
+  end
 end
