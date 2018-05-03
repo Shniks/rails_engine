@@ -12,7 +12,6 @@ RSpec.describe Customer, type: :model do
     it { is_expected.to have_many(:transactions).through(:invoices) }
   end
 
-
   context 'Methods' do
     describe '#favorite_merchant' do
       it 'should return the customers favorite merchant' do
