@@ -23,7 +23,9 @@ describe 'Items search API' do
     count = 3
     create_list(:item, count, merchant: merchant)
 
-    get "/api/v1/items/find_all?unit_price=#{Item.last.unit_price}"
+    price_string = (Item.last.unit_price / 100.0).to_s
+    
+    get "/api/v1/items/find_all?unit_price=#{price_string}"
 
     expect(response).to be_successful
 
