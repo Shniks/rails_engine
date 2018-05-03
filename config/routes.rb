@@ -31,6 +31,10 @@ Rails.application.routes.draw do
         get 'random', to: 'random#index'
       end
       resources :customers, only: [:index, :show]
+
+      namespace :invoices do
+        get '/:id/transactions', to: 'transactions#index'
+      end
     end
   end
 end

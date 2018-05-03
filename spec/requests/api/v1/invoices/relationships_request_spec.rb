@@ -13,6 +13,6 @@ describe 'Invoices API Relationships' do
     expect(response).to be_successful
 
     transactions = JSON.parse(response.body)
-    expect(trasactions.count).to eq(5)
+    expect(transactions.count).to eq(5)
   end
 end
