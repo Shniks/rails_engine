@@ -7,13 +7,13 @@ namespace :import do
     puts 'Loading merchants...'
     load_merchants
     puts 'Loading transactions...'
-    load_transactions
     puts 'Loading customers...'
     load_customers
-    puts 'Loading items...'
-    load_items
     puts 'Loading invoices...'
     load_invoices
+    load_transactions
+    puts 'Loading items...'
+    load_items
     puts 'Loading invoice items...'
     load_invoice_items
     puts 'All CSV files loaded and ready to use.'
