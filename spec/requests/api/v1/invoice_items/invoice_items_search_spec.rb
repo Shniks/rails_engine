@@ -10,12 +10,12 @@ describe 'Invoice Items Search API' do
 
     price_string = (InvoiceItem.first.unit_price / 100.0).to_f
 
-    get "/api/v1/invoices/find?unit_price=#{price_string}"
+    get "/api/v1/invoice_items/find?unit_price=#{price_string}"
 
     expect(response).to be_successful
 
     invoice = JSON.parse(response.body)
 
-    expect(invoice.id).to be(InvoiceItem.first.id)
+    expect(invoice['id']).to be(InvoiceItem.first.id)
   end
 end
