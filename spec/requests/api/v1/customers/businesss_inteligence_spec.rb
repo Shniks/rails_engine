@@ -20,5 +20,6 @@ describe 'Customer business inteligence API' do
     merchant = JSON.parse(response.body)
 
     expect(merchant['id']).to be(merchant_1.id)
+    expect(merchant['name']).to eq(merchant_1.name)
   end
 end
