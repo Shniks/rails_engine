@@ -8,8 +8,4 @@ class Api::V1::Merchants::RevenueController < ApplicationController
     end
     render json: { "revenue" => "#{revenue}"}
   end
-
-
-
-
 end
