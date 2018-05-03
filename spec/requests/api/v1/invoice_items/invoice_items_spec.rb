@@ -22,7 +22,7 @@ describe 'Invoice Items API' do
 
     invoice_item = JSON.parse(response.body)
 
-    expect(invoice_item['id']).to be(item.id)
+    expect(invoice_item['id']).to be(items.first.id)
     expect(invoice_item['created_at']).to be_nil
     expect(invoice_item['updated_at']).to be_nil
   end
