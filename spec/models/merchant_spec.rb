@@ -83,5 +83,24 @@ RSpec.describe Merchant, type: :model do
         expect(Merchant.most_items(2).last.top_items).to eq(4)
       end
     end
+
+    describe '.total_revenue_for_all_merchants' do
+      it 'returns the total revenue across all merchants for a particular day' do
+        merchant_1, merchant_2, merchant_3 = create_list(:merchant, 3)
+        date = Date.new(1969, 7, 20)
+        invoice_1 = create(:invoice, created_at: date, merchant_id: merchant_1.id)
+        invoice_2 = create(:invoice, merchant_id: merchant_2.id)
+        invoice_3 = create(:invoice, created_at: date, merchant_id: merchant_3.id)
+        create(:transaction, invoice_id: invoice_1.id, result: "success")
+        create(:transaction, invoice_id: invoice_2.id, result: "success")
+        create(:transaction, invoice_id: invoice_3.id, result: "success")
+        create(:invoice_item, unit_price: 11000, quantity: 4, invoice: invoice_1)
+        create(:invoice_item, unit_price: 3000, quantity: 2, invoice: invoice_2)
+        create(:invoice_item, unit_price: 12000, quantity: 5, invoice: invoice_2)
+        create(:invoice_item, unit_price: 6000, quantity: 3, invoice: invoice_3)
+
+        expect(Merchant.overall_revenue(date)).to eq(62000)
+      end
+    end
   end
 end
