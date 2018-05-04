@@ -44,6 +44,21 @@ RSpec.describe Merchant, type: :model do
         expect(merchant.total_revenue_by_date(date)).to eq(18000)
       end
     end
+
+    describe '#favorite_customer' do
+      it 'returns the favorite customer for that merchant' do
+        merchant = create(:merchant)
+        customer_1, customer_2 = create_list(:customer, 2)
+        create_list(:invoice, 3, customer: customer_1, merchant: merchant)
+        create_list(:invoice, 2, customer: customer_2, merchant: merchant)
+        Invoice.all.each do |invoice|
+          create(:transaction, invoice: invoice)
+        end
+
+        expect(merchant.favorite_customer["first_name"]).to eq(customer_1.first_name)
+        expect(merchant.favorite_customer["last_name"]).to eq(customer_1.last_name)
+      end
+    end
   end
 
   describe 'Class Methods' do
