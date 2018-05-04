@@ -26,7 +26,7 @@ describe 'Items Business Intelligence API' do
     expect(json.last['id']).to be(@items[-3].id)
   end
 
-  it 'should retur the top X items ranked by total number sold' do
+  it 'should return the top X items ranked by total number sold' do
     get "/api/v1/items/most_items?quantity=2"
 
     expect(response).to be_successful
