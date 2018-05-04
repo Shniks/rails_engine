@@ -46,7 +46,10 @@ rails s
 
 Open up a browser window and then visit any of the specified [endpoints](./readme/endpoints.md).
 
-### Database schema
+### Database schema  
+
+The relationships between the various database tables are outlined below:
+
 ![schema](./readme/schema.png)
 
 ### Testing
