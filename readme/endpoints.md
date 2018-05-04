@@ -2,7 +2,7 @@
 
 NOTES:
   * All endpoints are prefixed with `/api/v1`
-  * All endpoints are accesse with the **GET** verb
+  * All endpoints are accessable with the **GET** verb
   * All responses are formatted as JSON strings
   * No authentication query parameters or headers are required
 
