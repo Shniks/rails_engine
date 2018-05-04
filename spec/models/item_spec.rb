@@ -46,12 +46,12 @@ describe Item, type: :model do
         item = @items.last
         date = Date.new(1969, 7, 20)
         create_list(:invoice, 10, status: 'shipped', created_at: date).each do |invoice|
-          create(:invoice_item, invoice: invoice, item: item)
+          create(:invoice_item, quantity: 10, invoice: invoice, item: item)
         end
 
         result = item.best_day
 
-        expect(result).to eq(date.to_datetime)
+        expect(result).to eq(date)
       end
     end
   end
