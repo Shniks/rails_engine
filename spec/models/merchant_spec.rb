@@ -64,5 +64,23 @@ RSpec.describe Merchant, type: :model do
         expect(Merchant.most_revenue(2).first.revenue).to eq(60000)
       end
     end
+
+    describe '.most_items' do
+      it 'returns the most items for a merchant' do
+        merchant_1, merchant_2, merchant_3 = create_list(:merchant, 3)
+        invoice_1 = create(:invoice, merchant_id: merchant_1.id)
+        invoice_2 = create(:invoice, merchant_id: merchant_2.id)
+        invoice_3 = create(:invoice, merchant_id: merchant_3.id)
+        create(:transaction, invoice_id: invoice_1.id, result: "success")
+        create(:transaction, invoice_id: invoice_2.id, result: "success")
+        create(:transaction, invoice_id: invoice_3.id, result: "success")
+        create(:invoice_item, unit_price: 11000, quantity: 4, invoice: invoice_1)
+        create(:invoice_item, unit_price: 12000, quantity: 5, invoice: invoice_2)
+        create(:invoice_item, unit_price: 6000, quantity: 3, invoice: invoice_3)
+
+        expect(Merchant.most_items(2).length).to eq(2)
+        expect(Merchant.most_items(2).first.top_items).to eq(5)
+      end
+    end
   end
 end
