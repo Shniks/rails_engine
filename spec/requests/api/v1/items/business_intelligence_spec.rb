@@ -33,8 +33,24 @@ describe 'Items Business Intelligence API' do
 
     json = JSON.parse(response.body)
 
-    expect(json.length).to be(3)
+    expect(json.length).to be(2)
     expect(json.first['id']).to be(@items.last.id)
     expect(json.last['id']).to be(@items[-2].id)
+  end
+
+  it 'should return the most recent date with the most sales for a given item' do
+    item = @items.last
+    date = Date.new(1969, 7, 20)
+    invoices = create_list(:invoice, 10, status: 'shipped', created_at: date)
+    invoices.each do |invoice|
+      create(:invoice_item, invoice: invoice, item: item)
+    end
+
+    get "/api/v1/items/#{item.id}/best_day"
+    expected_date = date.to_datetime
+
+    expect(result).to be_successful
+
+    expect(result['best_day']).to eq(expected_date)
   end
 end
