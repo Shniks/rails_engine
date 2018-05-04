@@ -7,10 +7,19 @@ The endpoints for interacting with the API are located [here](./readme/endpoints
 The application is also hosted on [Heroku](http://rails-engine-1801.herokuapp.com/api/v1/merchants).
 
 ## Table of Contents
-- [Installation Instructions](#installation-instructions)
-- [Database Schema](#database-schema)
-- [Running Tests](#running-tests)
-- [Authors](#authors)
+[Prerequisites](#prerequisites)  
+[Installation Instructions](#installation-instructions)  
+[Database Schema](#database-schema)  
+[Testing](#testing)  
+[Authors](#authors)
+
+### Prerequisites
+
+```
+Ruby Version 2.4 or higher
+Rails Version 5 or higher
+Postgresql
+```
 
 ### Installation Instructions
 
@@ -39,3 +48,17 @@ Open up a browser window and then visit any of the specified [endpoints](./readm
 
 ### Database schema
 ![schema](./readme/schema.png)
+
+### Testing
+
+This app has a 100% test coverage using the ```RSpec``` testing framework. The app utilizes various gems including [Factory Bot](https://github.com/thoughtbot/factory_bot), [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) and [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers).
+
+Testing can be initiated by entering the following command in your terminal:
+```ruby
+Rspec
+```
+
+### Authors
+
+[Kolya Venturi](https://github.com/kolyaventuri)  
+[Nikhil Shahi](https://github.com/Shniks)
