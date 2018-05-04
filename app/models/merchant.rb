@@ -23,4 +23,12 @@ class Merchant < ApplicationRecord
     .group(:id)
     .limit(quantity)
   end
+
+  def self.most_items(quantity)
+    select('merchants.*, sum(invoice_items.quantity) as top_items')
+    .joins(items: [:invoice_items])
+    .order('top_items DESC')
+    .group(:id)
+    .limit(quantity)
+  end
 end
