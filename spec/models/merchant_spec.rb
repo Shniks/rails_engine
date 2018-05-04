@@ -80,6 +80,7 @@ RSpec.describe Merchant, type: :model do
 
         expect(Merchant.most_items(2).length).to eq(2)
         expect(Merchant.most_items(2).first.top_items).to eq(5)
+        expect(Merchant.most_items(2).last.top_items).to eq(4)
       end
     end
   end
