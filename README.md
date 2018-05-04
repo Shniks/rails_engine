@@ -14,7 +14,6 @@ The application is also hosted on [Heroku](http://rails-engine-1801.herokuapp.co
 [Authors](#authors)
 
 ### Prerequisites
----
 
 ```
 Ruby Version 2.4 or higher
@@ -23,7 +22,6 @@ Postgresql
 ```
 
 ### Installation Instructions
----
 
 Clone this repository into your machine using the following command:
 ```ruby
@@ -49,11 +47,9 @@ rails s
 Open up a browser window and then visit any of the specified [endpoints](./readme/endpoints.md).
 
 ### Database schema
----
 ![schema](./readme/schema.png)
 
 ### Testing
----
 
 This app has a 100% test coverage (as determined by [SimpleCov](https://github.com/colszowka/simplecov)) using the ```RSpec``` testing framework. The app utilizes various gems including [Factory Bot](https://github.com/thoughtbot/factory_bot), [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) and [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers).
 
@@ -63,7 +59,6 @@ Rspec
 ```
 
 ### Authors
----
 
 [Kolya Venturi](https://github.com/kolyaventuri)  
 [Nikhil Shahi](https://github.com/Shniks)
