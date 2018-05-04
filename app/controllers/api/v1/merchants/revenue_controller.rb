@@ -8,4 +8,10 @@ class Api::V1::Merchants::RevenueController < ApplicationController
     end
     render json: { "revenue" => "#{revenue}"}
   end
+
+  def index
+    date = Date.parse(params[:date])
+    revenue = format('%.2f', Merchant.overall_revenue(date) / 1e2)
+    render json: { "total_revenue" => "#{revenue}"}
+  end
 end
