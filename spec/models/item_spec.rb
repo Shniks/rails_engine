@@ -40,5 +40,19 @@ describe Item, type: :model do
         expect(result.last).to eq(@items[-2])
       end
     end
+
+    describe '#best_day' do
+      it 'should return the best day for an item' do
+        item = @items.last
+        date = Date.new(1969, 7, 20)
+        create_list(:invoice, 10, status: 'shipped', created_at: date).each do |invoice|
+          create(:invoice_item, invoice: invoice, item: item)
+        end
+
+        result = item.best_day
+
+        expect(result).to be(date)
+      end
+    end
   end
 end
