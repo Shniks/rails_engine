@@ -120,9 +120,7 @@ GET /customers/:id/transactions
 ```
 Retrieves all [transactions](#transaction-object) for a given customer.
 
----
 ## Record Objects
----
 
 ### Merchant Object
 ```
