@@ -1,24 +1,7 @@
-# README
+# RAILS ENGINE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+The Rails Engine is an API server to interact with (retrieve data) for an online merchant shop. This includes items, merchants, customers, and transactions/invoices.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The endpoints for interacting with the API are provided [here](https://github.com/kolyaventuri/rails_engine/readme/endpoints.md)
