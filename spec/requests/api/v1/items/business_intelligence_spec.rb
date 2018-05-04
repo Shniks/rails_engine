@@ -49,8 +49,10 @@ describe 'Items Business Intelligence API' do
     get "/api/v1/items/#{item.id}/best_day"
     expected_date = date.to_datetime
 
-    expect(result).to be_successful
+    expect(response).to be_successful
 
-    expect(result['best_day']).to eq(expected_date)
+
+    result = JSON.parse(response.body)
+    expect(result['best_day']).to eq(expected_date.to_s)
   end
 end
