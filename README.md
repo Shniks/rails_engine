@@ -58,7 +58,7 @@ This app has a 100% test coverage (as determined by [SimpleCov](https://github.c
 
 Testing can be initiated by entering the following command in your terminal:
 ```ruby
-Rspec
+rspec
 ```
 
 ### Authors
