@@ -1,4 +1,4 @@
-# RAILS ENGINE - Endpoints
+# Rails Engine - Endpoints
 
 NOTES:
   * All endpoints are prefixed with `/api/v1`
