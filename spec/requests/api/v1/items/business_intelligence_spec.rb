@@ -43,16 +43,15 @@ describe 'Items Business Intelligence API' do
     date = Date.new(1969, 7, 20)
     invoices = create_list(:invoice, 10, status: 'shipped', created_at: date)
     invoices.each do |invoice|
-      create(:invoice_item, invoice: invoice, item: item)
+      create(:invoice_item, invoice: invoice, quantity: 20, item: item)
     end
 
     get "/api/v1/items/#{item.id}/best_day"
-    expected_date = date.to_datetime
 
     expect(response).to be_successful
 
-
     result = JSON.parse(response.body)
-    expect(result['best_day']).to eq(expected_date.to_s)
+    expect(result['best_day']).to_not be_nil
+    expect(Date.parse(result['best_day'])).to eq(date)
   end
 end

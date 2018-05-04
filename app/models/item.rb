@@ -25,12 +25,11 @@ class Item < ApplicationRecord
 
   def best_day
     invoices
-      .group(:created_at)
-      .order('count_created_at DESC')
-      .limit(1)
-      .count(:created_at)
-      .keys
+      .joins(:invoice_items)
+      .select('invoices.*, SUM(invoice_items.quantity) AS max')
+      .group(:created_at, :id)
+      .order('max DESC, created_at DESC')
       .first
-      .to_datetime
+      .created_at 
   end
 end
