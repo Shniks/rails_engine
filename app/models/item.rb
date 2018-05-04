@@ -22,4 +22,15 @@ class Item < ApplicationRecord
       .order('num_sold DESC')
       .limit(quantity)
   end
+
+  def best_day
+    invoices
+      .group(:created_at)
+      .order('count_created_at DESC')
+      .limit(1)
+      .count(:created_at)
+      .keys
+      .first
+      .to_datetime
+  end
 end

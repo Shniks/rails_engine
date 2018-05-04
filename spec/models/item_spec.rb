@@ -51,7 +51,7 @@ describe Item, type: :model do
 
         result = item.best_day
 
-        expect(result).to be(date)
+        expect(result).to eq(date.to_datetime)
       end
     end
   end
