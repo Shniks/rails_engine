@@ -35,7 +35,7 @@ bundle
 
 Setup the database by running the following commands:
 ```ruby
-rake db:{create, migrate}
+rake db:create db:migrate
 rake import:all
 ```
 
