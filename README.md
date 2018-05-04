@@ -51,7 +51,7 @@ Open up a browser window and then visit any of the specified [endpoints](./readm
 
 ### Testing
 
-This app has a 100% test coverage (as determined by [SimpleCov](https://github.com/colszowka/simplecov)) using the ```RSpec``` testing framework. The app utilizes various gems including [Factory Bot](https://github.com/thoughtbot/factory_bot), [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) and [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers).
+This app has a 100% test coverage (as determined by [SimpleCov](https://github.com/colszowka/simplecov)) using the [RSpec](https://github.com/rspec/rspec-rails) testing framework. The app utilizes various gems including [Factory Bot](https://github.com/thoughtbot/factory_bot), [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) and [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers).
 
 Testing can be initiated by entering the following command in your terminal:
 ```ruby
