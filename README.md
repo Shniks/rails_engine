@@ -1,24 +1,64 @@
-# README
+# Rails Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Rails Engine is an API server to interact with and retrieve data for an online merchant shop. The data includes information about items, merchants, customers, and transactions/ invoices.
 
-Things you may want to cover:
+The endpoints for interacting with the API are located [here](./readme/endpoints.md).
 
-* Ruby version
+The application is also hosted on [Heroku](http://rails-engine-1801.herokuapp.com/api/v1/merchants).
 
-* System dependencies
+## Table of Contents
+[Prerequisites](#prerequisites)  
+[Installation Instructions](#installation-instructions)  
+[Database Schema](#database-schema)  
+[Testing](#testing)  
+[Authors](#authors)
 
-* Configuration
+### Prerequisites
 
-* Database creation
+```
+Ruby Version 2.4 or higher
+Rails Version 5 or higher
+Postgresql
+```
 
-* Database initialization
+### Installation Instructions
 
-* How to run the test suite
+Clone this repository into your machine using the following command:
+```ruby
+git clone git@github.com:kolyaventuri/rails_engine.git
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Switch into the directory ```rails_engine``` and run bundle as follows:
+```ruby
+bundle
+```
 
-* Deployment instructions
+Setup the database by running the following commands:
+```ruby
+rake db:{create, migrate}
+rake import:all
+```
 
-* ...
+To view the app on localhost, start the server by entering the following command in your terminal:
+```ruby
+rails s
+```
+
+Open up a browser window and then visit any of the specified [endpoints](./readme/endpoints.md).
+
+### Database schema
+![schema](./readme/schema.png)
+
+### Testing
+
+This app has a 100% test coverage using the ```RSpec``` testing framework. The app utilizes various gems including [Factory Bot](https://github.com/thoughtbot/factory_bot), [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) and [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers).
+
+Testing can be initiated by entering the following command in your terminal:
+```ruby
+Rspec
+```
+
+### Authors
+
+[Kolya Venturi](https://github.com/kolyaventuri)  
+[Nikhil Shahi](https://github.com/Shniks)
